@@ -10,13 +10,13 @@ read opcao
 if [ $opcao = 1 ]; then
 	sudo apt update
 	sudo apt upgrade -y
-	sudo apt install zsh git tmux neovim
+	sudo apt install zsh tmux neovim
 else 
 
 	# curl -fLo "Fira Code Nerd Font Complete.otf" \https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Fira20%Code/complete/Fira20%Code%20Nerd%20Font%20Complete.otf
 
 	#Define theme for the gnome-terminal
-	dconf load /org/gnome/terminal < terminal_settings_backup.txt
+	dconf load /org/gnome/terminal/ < terminal_settings_backup.txt
 
 	#Neovim
 	if [ -f "$HOME/.config/nvim/autoload/plug.vim" ]; then
@@ -37,7 +37,7 @@ else
 		git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 		rm ~/.zshrc
-		ln -s .zshrc ~/.zshrc
+		ln -s zshrc ~/.zshrc
 	fi
 
 	#TMUX
@@ -45,7 +45,8 @@ else
 		echo "TMUX Ok"
 	else
 		git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-		ln -s .tmux.config ~/.tmux.config
+		rm ~/.tmux.config
+		ln -s tmux.config ~/.tmux.config
 	fi
 fi
 
