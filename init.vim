@@ -46,6 +46,7 @@ nnoremap <C-p> :Files<cr>
 nnoremap <C-f> :Ag<space>
 nnoremap <C-s> :%s/
 nnoremap <C-a> ggVG
+nnoremap <C-b> :Buffers<CR>
 nnoremap <Tab> <S->><S->>
 nnoremap <S-Tab> <S-<><S-<>
 
@@ -57,8 +58,8 @@ inoremap <C-v> <esc>v
 map <F3> :vsplit ~/.config/nvim/init.vim<cr>
 map <F4> :source ~/.config/nvim/init.vim<cr>
 map <F5> :NERDTreeRefreshRoot<cr>
-map <C-A-Up> :m -2<CR>gv
-map <C-A-Down> :m +1<CR>gv 
+map <C-A-Up> :m -2<CR>
+map <C-A-Down> :m +1<CR> 
 
 "--------------COC VIM-----------------
 nmap <silent> gd <Plug>(coc-definition)
@@ -72,6 +73,10 @@ nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
+nmap <silent> <A-k> :wincmd k<CR>
+nmap <silent> <A-j> :wincmd j<CR>
+nmap <silent> <A-h> :wincmd h<CR>
+nmap <silent> <A-l> :wincmd l<CR>
 "===============VARIÁVEIS E CONFIGURAÇÕES DOS PLUGINS===========
 "---------UltiSnips---------
 let g:UltiSnipsEditSplit = 'vertical'
@@ -107,8 +112,12 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver'
 	\ ]
 
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
 "-----------------------------------------------
 "===============FOOTER==========================
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
+
