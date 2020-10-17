@@ -10,11 +10,12 @@ read opcao
 if [ $opcao = 1 ]; then
 	sudo apt update
 	sudo apt full-upgrade -y
-	sudo apt install zsh tmux neovim gitg -y
+	sudo apt install zsh tmux neovim gitg fonts-powerline -y
 	sudo usermod -s /bin/zsh $(whoami)
 	sudo -k
 else 
 	# Install the font FiraCode
+	mkdir ~/.local/share/fonts
 	curl -fLo ~/.local/share/fonts/"Fira Code Regular Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf
 
 	#Define theme for the gnome-terminal
@@ -35,7 +36,7 @@ else
 		echo "TMUX Ok"
 	else
 		git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-		ln -s $(pwd)/tmux.config ~/.tmux.conf
+		ln -s $(pwd)/tmux.conf ~/.tmux.conf
 	fi
 
 	#Oh My Zsh
