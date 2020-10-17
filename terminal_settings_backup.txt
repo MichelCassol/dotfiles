@@ -14,7 +14,7 @@ list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '728b6696-e53f-4d39-9668-bcfb71dc2
 
 [legacy/profiles:/:728b6696-e53f-4d39-9668-bcfb71dc28a5]
 background-color='rgb(0,0,0)'
-background-transparency-percent=14
+background-transparency-percent=22
 bold-color-same-as-fg=true
 bold-is-bright=false
 cursor-blink-mode='on'
