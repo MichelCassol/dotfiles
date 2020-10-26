@@ -16,7 +16,7 @@ Plug 'grvcoelho/vim-javascript-snippets'			"Snippets para JavaScript
 Plug 'neoclide/coc.nvim', {'branch': 'release'}		"Inteligencia do VScode para Vim
 Plug 'ryanoasis/vim-devicons'						"Icones para o NERDTREE
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'		"Adiciona cor aos icones do NERDTREE
-Plug 'valloric/matchtagalways'
+Plug 'valloric/matchtagalways'						"Destaca pares de tags HTML
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================

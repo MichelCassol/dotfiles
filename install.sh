@@ -10,9 +10,12 @@ read opcao
 if [ $opcao = 1 ]; then
 	sudo apt update
 	sudo apt full-upgrade -y
-	sudo apt install zsh tmux neovim gitg fonts-powerline -y
+	sudo apt install zsh tmux neovim gitg fonts-powerline snapd flatpak -y
 	sudo usermod -s /bin/zsh $(whoami)
+	sudo snap install android-studio --classic
+	sudo snap install insomnia
 	sudo -k
+	flatpak install flathub com.spotify.Client -y
 else 
 	# Install the font FiraCode
 	mkdir ~/.local/share/fonts
