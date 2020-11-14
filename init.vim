@@ -36,7 +36,6 @@ set ignorecase
 "===============MAPEAMENTO DE TECLAS=============
 let mapleader="\<space>"
 nnoremap <leader>; A;<esc>
-nnoremap <leader>us :UltiSnipsEdit<cr>
 nnoremap <leader>w <c-w>w
 nnoremap <leader>l <c-w>l
 nnoremap <leader>f :NERDTreeFocus<CR>
@@ -61,6 +60,7 @@ map <F5> :NERDTreeRefreshRoot<cr>
 map <C-A-Up> :m -2<CR>
 map <C-A-Down> :m +1<CR> 
 
+
 "--------------COC VIM-----------------
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -77,6 +77,13 @@ nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-j> :wincmd j<CR>
 nmap <silent> <A-h> :wincmd h<CR>
 nmap <silent> <A-l> :wincmd l<CR>
+
+"------------Disable Navigation Keys--------------
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
 "===============VARIÁVEIS E CONFIGURAÇÕES DOS PLUGINS===========
 "---------UltiSnips---------
 let g:UltiSnipsEditSplit = 'vertical'
@@ -87,20 +94,19 @@ let g:UltiSnipsExpandTrigger= '<tab>'
 let g:rainbow_active = 1
 
 "---------CONFIGURAÇÕES DO NERDTREE---------------
-autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 map <F2> :NERDTreeToggle<CR>
 
 "---------DEV ICONS--------------------
-set guifont=FiraCode_Nerd_Font_Regular:h11
 let g:airline_powerline_fonts = 1
 autocmd FileType nerdtree setlocal nolist
 
 "---------NERD COMMENTER----------------
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
 
