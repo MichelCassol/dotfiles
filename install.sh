@@ -21,8 +21,7 @@ if [ $opcao = 1 ]; then
 else 
 	# Install the font FiraCode
 	mkdir ~/.local/share/fonts
-	curl -fLo ~/.local/share/fonts/"Fantasque Sans Mono Nerd Font.ttf" \ 
-		https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
+	curl -fLo ~/.local/share/fonts/"Fantasque Sans Mono Nerd Font.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
 
 	#Define theme for the gnome-terminal
 	dconf load /org/gnome/terminal/ < terminal_settings_backup.txt
