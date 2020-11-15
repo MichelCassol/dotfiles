@@ -12,7 +12,8 @@ read opcao
 if [ $opcao = 1 ]; then
 	sudo apt update &&
 	sudo apt full-upgrade -y &&
-	sudo apt install zsh tmux neovim gitg fonts-powerline snapd flatpak -y &&
+	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - &&
+	sudo apt install zsh tmux neovim gitg nodejs fonts-powerline snapd flatpak -y &&
 	sudo usermod -s /bin/zsh $(whoami) &&
 	sudo snap install android-studio --classic &&
 	sudo snap install insomnia
