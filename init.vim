@@ -17,6 +17,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}		"Inteligencia do VScode para Vi
 Plug 'ryanoasis/vim-devicons'						"Icones para o NERDTREE
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'		"Adiciona cor aos icones do NERDTREE
 Plug 'valloric/matchtagalways'						"Destaca pares de tags HTML
+Plug 'alvan/vim-closetag'							"Autocompleta TAGS HTML
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================
@@ -52,14 +53,13 @@ nnoremap <S-Tab> <S-<><S-<>
 vnoremap <Tab> <S->><S->> gv 
 vnoremap <S-Tab> <S-<><S-<> gv 
 
-inoremap <C-v> <esc>v
+inoremap <A-v> <esc>v
 
 map <F3> :vsplit ~/.config/nvim/init.vim<cr>
 map <F4> :source ~/.config/nvim/init.vim<cr>
 map <F5> :NERDTreeRefreshRoot<cr>
-map <C-A-Up> :m -2<CR>
-map <C-A-Down> :m +1<CR> 
-
+map <C-A-k> :m -2<CR>
+map <C-A-j> :m +1<CR> 
 
 "--------------COC VIM-----------------
 nmap <silent> gd <Plug>(coc-definition)
@@ -68,11 +68,6 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 "----------Mapeamento das teclas de navegação-----------
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-
 nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-j> :wincmd j<CR>
 nmap <silent> <A-h> :wincmd h<CR>
@@ -83,6 +78,10 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
+"-------------Drop menu navigation-----------------
+inoremap <A-j> <Down>
+inoremap <A-k> <Up>
 
 "===============VARIÁVEIS E CONFIGURAÇÕES DOS PLUGINS===========
 "---------UltiSnips---------
