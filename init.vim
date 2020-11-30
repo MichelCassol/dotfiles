@@ -7,7 +7,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "Busca de arquivos
 Plug 'junegunn/fzf.vim'								"Complemento do fzf
 Plug 'jiangmiao/auto-pairs'							"Auto completa chaves, parenteses e etc
 Plug 'honza/vim-snippets'							"Snippets prontos para várias linguagens
-Plug 'frazrepo/vim-rainbow'							"Definie pares de parentese por cor
+Plug 'luochen1990/rainbow'							"Definie pares de parentese por cor
 Plug 'vim-airline/vim-airline'						"Personaliza a barra de status
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x' } "EMBELEZADOR DE CODIGO JS
 Plug 'aluriak/nerdcommenter'						"Complemento para comentarios de varias linhas
@@ -84,13 +84,14 @@ inoremap <A-j> <Down>
 inoremap <A-k> <Up>
 
 "===============VARIÁVEIS E CONFIGURAÇÕES DOS PLUGINS===========
-"---------UltiSnips---------
-let g:UltiSnipsEditSplit = 'vertical'
-let g:UltiSnipsSnippetsDir = '~/.config/nvim/UltiSnips'
-let g:UltiSnipsExpandTrigger= '<tab>'
-
 "---------Rainbow--------
 let g:rainbow_active = 1
+
+let g:rainbow_conf = {
+	\	'separately': {
+	\		'nerdtree': 0,
+	\	}
+	\}
 
 "---------CONFIGURAÇÕES DO NERDTREE---------------
 autocmd StdinReadPre * let s:std_in=1
@@ -121,8 +122,3 @@ let g:coc_global_extensions = [
 inoremap <silent><expr> <c-space> coc#refresh()
 
 "-----------------------------------------------
-"===============FOOTER==========================
-if exists("g:loaded_webdevicons")
-  call webdevicons#refresh()
-endif
-
