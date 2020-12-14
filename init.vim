@@ -18,10 +18,13 @@ Plug 'ryanoasis/vim-devicons'						"Icones para o NERDTREE
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'		"Adiciona cor aos icones do NERDTREE
 Plug 'valloric/matchtagalways'						"Destaca pares de tags HTML
 Plug 'alvan/vim-closetag'							"Autocompleta TAGS HTML
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================
-syntax on
+if !exists('g:syntax_on')
+	syntax enable
+endif
 
 colorscheme bluewery
 let g:lightline = { 'colorscheme': 'bluewery' }
@@ -79,6 +82,10 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 "-------------Drop menu navigation-----------------
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
@@ -97,6 +104,7 @@ let g:rainbow_conf = {
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
 
 map <F2> :NERDTreeToggle<CR>
 
