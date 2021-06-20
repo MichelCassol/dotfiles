@@ -10,15 +10,11 @@ echo "
 read opcao
 
 if [ $opcao = 1 ]; then
-	sudo apt update &&
-	sudo apt full-upgrade -y &&
-	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - &&
-	sudo apt install zsh tmux neovim gitg nodejs fonts-powerline snapd flatpak -y &&
+	sudo pacman -Syu &&
+	sudo pacman -S curl zsh tmux neovim gitg nodejs powerline-fonts flatpak -y &&
 	sudo usermod -s /bin/zsh $(whoami) &&
-	sudo snap install android-studio --classic &&
-	sudo snap install insomnia
 	sudo -k
-	flatpak install flathub com.spotify.Client -y
+	flatpak install flathub com.google.AndroidStudio com.getpostman.Postman flathub com.spotify.Client -y
 else 
 	# Install the font FiraCode
 	mkdir ~/.local/share/fonts
