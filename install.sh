@@ -11,7 +11,7 @@ read opcao
 
 if [ $opcao = 1 ]; then
 	sudo pacman -Syu &&
-	sudo pacman -S curl zsh tmux neovim gitg nodejs powerline-fonts flatpak -y &&
+		sudo pacman -S curl zsh tmux neovim gitg nodejs powerline-fonts flatpak ranger -y &&
 	sudo usermod -s /bin/zsh $(whoami) &&
 	sudo -k
 	flatpak install flathub com.google.AndroidStudio com.getpostman.Postman flathub com.spotify.Client -y
