@@ -18,6 +18,7 @@ Plug 'valloric/matchtagalways'						"Destaca pares de tags HTML
 Plug 'alvan/vim-closetag'							"Autocompleta TAGS HTML
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'kevinhwang91/rnvimr'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================
@@ -35,6 +36,10 @@ set number
 set relativenumber
 set inccommand=split
 set ignorecase
+set linebreak
+set wrap tw=80
+set incsearch
+set title
 
 "===============MAPEAMENTO DE TECLAS=============
 let mapleader="\<space>"
@@ -43,8 +48,8 @@ nnoremap <leader>; A;<esc>
 nnoremap <leader>w <c-w>w
 nnoremap <leader>l <c-w>l
 nnoremap <leader>f :RnvimrToggle<CR>
-nnoremap <leader>. :bn<cr>
-nnoremap <leader>, :bp<cr>
+nnoremap <A-.> :bn<cr>
+nnoremap <A-,> :bp<cr>
 nnoremap <C-p> :Files<cr>
 nnoremap <C-f> :Ag<space>
 nnoremap <C-s> :%s/
@@ -52,10 +57,11 @@ nnoremap <C-a> ggVG
 nnoremap <C-b> :Buffers<CR>
 nnoremap <Tab> <S->><S->>
 nnoremap <S-Tab> <S-<><S-<>
-nnoremap <F3> :vsplit ~/.config/nvim/init.vim<cr>
+nnoremap <F3> :edit ~/.config/nvim/init.vim<cr>
 nnoremap <F5> :source ~/.config/nvim/init.vim<cr>
 nnoremap <C-A-k> :m -2<CR>
 nnoremap <C-A-j> :m +1<CR> 
+nnoremap q :quit<CR>
 
 vnoremap <Tab> <S->><S->> gv 
 vnoremap <S-Tab> <S-<><S-<> gv 

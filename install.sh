@@ -11,7 +11,7 @@ read opcao
 
 if [ $opcao = 1 ]; then
 	sudo pacman -Syu &&
-		sudo pacman -S curl zsh tmux neovim gitg nodejs powerline-fonts flatpak ranger -y &&
+	sudo pacman -S curl zsh tmux neovim gitg nodejs powerline-fonts flatpak ranger -y &&
 	sudo usermod -s /bin/zsh $(whoami) &&
 	sudo -k
 	flatpak install flathub com.google.AndroidStudio com.getpostman.Postman flathub com.spotify.Client -y
@@ -32,6 +32,14 @@ else
 		rm ~/.config/nvim/init.vim
 		ln -s $CURRENT_DIR/init.vim ~/.config/nvim/init.vim 
 	fi	
+
+	#Ranger
+	echo "Config the ranger"
+	ranger --copy-config=all
+	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+	rm ~/.config/ranger/rc.conf
+	ln -s $CURRENT_DIR/rc.conf ~/.config/ranger/rc.conf
+
 
 	#TMUX
 	if [ -f "~/.tmux.config" ]; then
