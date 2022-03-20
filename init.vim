@@ -48,6 +48,7 @@ nnoremap <leader>; A;<esc>
 nnoremap <leader>w <c-w>w
 nnoremap <leader>l <c-w>l
 nnoremap <leader>f :RnvimrToggle<CR>
+nnoremap <leader>d :bdelete<CR>
 nnoremap <A-.> :bn<cr>
 nnoremap <A-,> :bp<cr>
 nnoremap <C-p> :Files<cr>
