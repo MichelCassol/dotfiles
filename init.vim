@@ -62,7 +62,6 @@ nnoremap <F3> :edit ~/.config/nvim/init.vim<cr>
 nnoremap <F5> :source ~/.config/nvim/init.vim<cr>
 nnoremap <C-A-k> :m -2<CR>
 nnoremap <C-A-j> :m +1<CR> 
-nnoremap q :quit<CR>
 
 vnoremap <Tab> <S->><S->> gv 
 vnoremap <S-Tab> <S-<><S-<> gv 

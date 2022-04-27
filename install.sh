@@ -6,6 +6,7 @@ echo "
 	Escolhar uma opção:\n
 	1-Instalar pacotes
 	2-Configurar
+	3-Exit
 "
 read opcao
 
@@ -15,7 +16,7 @@ if [ $opcao = 1 ]; then
 	sudo usermod -s /bin/zsh $(whoami) &&
 	sudo -k
 	flatpak install flathub com.google.AndroidStudio com.getpostman.Postman flathub com.spotify.Client -y
-else 
+elif [ $opcao = 2 ]; then
 	# Install the font FiraCode
 	mkdir ~/.local/share/fonts
 	curl -fLo ~/.local/share/fonts/"Fantasque Sans Mono Nerd Font.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
@@ -60,5 +61,7 @@ else
 		rm ~/.zshrc
 		ln -s $CURRENT_DIR/zshrc ~/.zshrc
 	fi
+else 
+	echo "Bye bye"
 fi
 
