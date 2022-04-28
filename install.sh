@@ -3,20 +3,23 @@
 CURRENT_DIR=$(pwd)
 
 echo "
-	Escolhar uma opção:\n
-	1-Instalar pacotes
-	2-Configurar
+	Choose an option:\n
+	1-Install packages
+	2-To set up
 	3-Exit
 "
 read opcao
 
 if [ $opcao = 1 ]; then
+
 	sudo pacman -Syu &&
 	sudo pacman -S curl zsh tmux neovim gitg nodejs powerline-fonts flatpak ranger -y &&
 	sudo usermod -s /bin/zsh $(whoami) &&
 	sudo -k
-	flatpak install flathub com.google.AndroidStudio com.getpostman.Postman flathub com.spotify.Client -y
+	flatpak install flathub com.google.AndroidStudio com.getpostman.Postman com.spotify.Client -y
+
 elif [ $opcao = 2 ]; then
+
 	# Install the font FiraCode
 	mkdir ~/.local/share/fonts
 	curl -fLo ~/.local/share/fonts/"Fantasque Sans Mono Nerd Font.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
@@ -35,24 +38,28 @@ elif [ $opcao = 2 ]; then
 	fi	
 
 	#Ranger
-	echo "Config the ranger"
-	ranger --copy-config=all
-	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
-	rm ~/.config/ranger/rc.conf
-	ln -s $CURRENT_DIR/rc.conf ~/.config/ranger/rc.conf
-
+	if [ -f "~/.config/ranger/rc.conf" ]; then
+		echo "Configured Ranger"
+	else
+		echo "Configuring the ranger"
+		ranger --copy-config=all
+		git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+		rm ~/.config/ranger/rc.conf
+		ln -s $CURRENT_DIR/rc.conf ~/.config/ranger/rc.conf
+	fi
 
 	#TMUX
 	if [ -f "~/.tmux.config" ]; then
-		echo "TMUX Ok"
+		echo "Configured TMUX"
 	else
+		echo "Configuring the TMUX"
 		git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 		ln -s $CURRENT_DIR/tmux.conf ~/.tmux.conf
 	fi
 
 	#Oh My Zsh
 	if [ -d "~/.oh-my-zsh" ]; then
-		echo "Oh My Zsh installed"
+		echo "Oh My Zsh is installed"
 	else
 		echo "Installing Oh My Zsh"
 		sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

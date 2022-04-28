@@ -1,16 +1,24 @@
 
-# My Dotfiles
+ My Dotfiles
+===
 
-## Softwares
+### Softwares
 
-* Nvim
-* Tmux
-* Theme for Gnome terminal
-* Ranger
-* Zsh
+- Nvim
+- Tmux
+- Theme for Gnome terminal
+- Ranger
+- Zsh
 
-## Getting Started
+### Getting Started
 
-* First install git on your machine
-* Clone the repository: <https://github.com/MichelCassol/dotfiles.git>
-* Run ./install.sh
+1. First install git on your machine
+2. Clone the repository: 
+
+		git clone https://github.com/MichelCassol/dotfiles.git
+
+3. Browse to the folder where it was saved
+4. Make the installer executable
+
+		chmod +x install.sh
+5. Run ./install.sh
