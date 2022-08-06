@@ -1,4 +1,4 @@
-"==============PLUGINS=============================
+"==============PLUGINS============================= 
 call plug#begin()
 Plug 'relastle/bluewery.vim'						"Tema
 Plug 'terryma/vim-multiple-cursors'					"Multiplos cursores
@@ -16,9 +16,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}		"Inteligencia do VScode para Vi
 Plug 'ryanoasis/vim-devicons'						"Icones para o NERDTREE
 Plug 'valloric/matchtagalways'						"Destaca pares de tags HTML
 Plug 'alvan/vim-closetag'							"Autocompleta TAGS HTML
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'kevinhwang91/rnvimr'
-Plug 'Yggdroot/indentLine'
+Plug 'peitalin/vim-jsx-typescript'					"Realsa a sintaxe em codigos jsx
+Plug 'kevinhwang91/rnvimr'							"Adiciona suporte a Ranger
+Plug 'Yggdroot/indentLine'							"Adiciona linhas de identação
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================
@@ -60,8 +60,6 @@ nnoremap <Tab> <S->><S->>
 nnoremap <S-Tab> <S-<><S-<>
 nnoremap <F3> :edit ~/.config/nvim/init.vim<cr>
 nnoremap <F5> :source ~/.config/nvim/init.vim<cr>
-nnoremap <C-A-k> :m -2<CR>
-nnoremap <C-A-j> :m +1<CR> 
 
 vnoremap <Tab> <S->><S->> gv 
 vnoremap <S-Tab> <S-<><S-<> gv 
@@ -80,6 +78,11 @@ nnoremap <silent> <A-j> :wincmd j<CR>
 nnoremap <silent> <A-h> :wincmd h<CR>
 nnoremap <silent> <A-l> :wincmd l<CR>
 
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <C-l> <C-o>l
+
 "------------Disable Navigation Keys--------------
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -92,16 +95,10 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 "-------------Drop menu navigation-----------------
+inoremap <A-h> <Left>
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
-
-"---------------Alternar entre abas-----------------
-nnoremap <leader>k :tabnext<cr>
-nnoremap <leader>j :tabprevious<cr>
-
-"---------------Set Mouse True----------------------
-nnoremap <leader>m :set mouse=a<cr>
-nnoremap <leader>mm :set mouse=r<cr>
+inoremap <A-l> <Right>
 
 "---------------Map Tmux Clipboard-----------------
 vnoremap <leader>tc y<cr>:call system("tmux load-buffer -", @0)<cr>gv
@@ -116,7 +113,6 @@ let g:rainbow_active = 1
 
 "---------DEV ICONS--------------------
 let g:airline_powerline_fonts = 1
-autocmd FileType nerdtree setlocal nolist
 
 "---------NERD COMMENTER----------------
 " Add spaces after comment delimiters by default

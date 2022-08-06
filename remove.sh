@@ -71,3 +71,17 @@ else
 	echo 'NoDisplay=true' >> "$CAMINHO/nm-connection-editor.desktop"
 	echo "NM CONNECTION REMOVE"	
 fi
+
+if grep -q NoDisplay=true "$CAMINHO/grub-customizer.desktop"; then
+	echo "GRUB CUSTOMIZER OK"	
+else
+	echo 'NoDisplay=true' >> "$CAMINHO/grub-customizer.desktop"
+	echo "GRUB CUSTOMIZER REMOVE"	
+fi
+
+if grep -q NoDisplay=true "$CAMINHO/htop.desktop"; then
+	echo "HTOP OK"	
+else
+	echo 'NoDisplay=true' >> "$CAMINHO/htop.desktop"
+	echo "HTOP REMOVE"	
+fi

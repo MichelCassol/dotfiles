@@ -27,6 +27,9 @@ elif [ $opcao = 2 ]; then
 	#Define theme for the gnome-terminal
 	dconf load /org/gnome/terminal/ < terminal_settings_backup.txt
 
+	#Set keybindings on gnome
+	dconf load / < gnome-keybinds.conf
+
 	#Neovim
 	if [ -f "$HOME/.config/nvim/autoload/plug.vim" ]; then
 		echo "Vim-plug installed for neovim"
