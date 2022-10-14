@@ -1,6 +1,6 @@
 "==============PLUGINS============================= 
 call plug#begin()
-Plug 'relastle/bluewery.vim'						"Tema
+Plug 'dracula/vim', { 'as': 'dracula' }				"Tema
 Plug 'terryma/vim-multiple-cursors'					"Multiplos cursores
 Plug 'sheerun/vim-polyglot'							"Faz highlight de syntax
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "Busca de arquivos
@@ -19,6 +19,8 @@ Plug 'alvan/vim-closetag'							"Autocompleta TAGS HTML
 Plug 'peitalin/vim-jsx-typescript'					"Realsa a sintaxe em codigos jsx
 Plug 'kevinhwang91/rnvimr'							"Adiciona suporte a Ranger
 Plug 'Yggdroot/indentLine'							"Adiciona linhas de identação
+Plug 'maxmellon/vim-jsx-pretty'						"Embelezador para codigo TSX
+Plug 'christoomey/vim-system-copy'					"Ativa Ctrl-c/Ctrl-v 
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================
@@ -26,8 +28,7 @@ if !exists('g:syntax_on')
 	syntax enable
 endif
 
-colorscheme bluewery
-let g:lightline = { 'colorscheme': 'bluewery' }
+colorscheme dracula
 
 "===============VARIÁVEIS DE AMBIENTE============
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
@@ -40,11 +41,13 @@ set linebreak
 set wrap tw=80
 set incsearch
 set title
+set mouse=
 
 "===============MAPEAMENTO DE TECLAS=============
 let mapleader="\<space>"
 
 nnoremap <leader>; A;<esc>
+nnoremap <leader>, A,<esc>
 nnoremap <leader>w <c-w>w
 nnoremap <leader>l <c-w>l
 nnoremap <leader>f :RnvimrToggle<CR>
@@ -134,7 +137,8 @@ let g:coc_global_extensions = [
 	\ 'coc-css',
 	\ 'coc-html', 
 	\ 'coc-snippets', 
-	\ 'coc-tsserver'
+	\ 'coc-tsserver',
+	\ '@yaegassy/coc-tailwindcss3'
 	\ ]
 
 " Use <c-space> to trigger completion.

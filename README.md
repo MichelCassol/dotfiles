@@ -6,7 +6,6 @@
 
 - Nvim
 - Tmux
-- Theme for Gnome terminal
 - Ranger
 - Zsh
 

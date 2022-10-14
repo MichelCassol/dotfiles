@@ -13,19 +13,16 @@ read opcao
 if [ $opcao = 1 ]; then
 
 	sudo pacman -Syu &&
-	sudo pacman -S curl zsh tmux neovim gitg nodejs powerline-fonts flatpak ranger -y &&
+	sudo pacman -S curl zsh tmux neovim gitg nodejs powerline-fonts flatpak ranger wl-clipboard -y &&
 	sudo usermod -s /bin/zsh $(whoami) &&
 	sudo -k
-	flatpak install flathub com.google.AndroidStudio com.getpostman.Postman com.spotify.Client -y
+	flatpak install flathub com.raggesilver.BlackBox rest.insomnia.Insomnia com.spotify.Client -y
 
 elif [ $opcao = 2 ]; then
 
 	# Install the font FiraCode
 	mkdir ~/.local/share/fonts
 	curl -fLo ~/.local/share/fonts/"Fantasque Sans Mono Nerd Font.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
-
-	#Define theme for the gnome-terminal
-	dconf load /org/gnome/terminal/ < terminal_settings_backup.txt
 
 	#Set keybindings on gnome
 	dconf load / < gnome-keybinds.conf
