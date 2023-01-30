@@ -85,3 +85,17 @@ else
 	echo 'NoDisplay=true' >> "$CAMINHO/htop.desktop"
 	echo "HTOP REMOVE"	
 fi
+
+if grep -q NoDisplay=true "$CAMINHO/qv4l2.desktop"; then
+	echo "QV4L2 OK"	
+else
+	echo 'NoDisplay=true' >> "$CAMINHO/qv4l2.desktop"
+	echo "QV4L2 REMOVE"	
+fi
+
+if grep -q NoDisplay=true "$CAMINHO/qvidcap.desktop"; then
+	echo "QVIDCAP OK"	
+else
+	echo 'NoDisplay=true' >> "$CAMINHO/qvidcap.desktop"
+	echo "QVIDCAP REMOVE"	
+fi

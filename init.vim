@@ -42,6 +42,7 @@ set wrap tw=80
 set incsearch
 set title
 set mouse=
+set cul
 
 "===============MAPEAMENTO DE TECLAS=============
 let mapleader="\<space>"
@@ -122,6 +123,10 @@ let g:airline_powerline_fonts = 1
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
+
+" -----------Vim multiple cursors-------------------
+let g:multi_cursor_start_word_key = '<C-n>'
+let g:multi_cursor_select_all_key = '<C-A-n>'
 
 "---------Rnvimr----------------------
 let g:rnvimr_enable_picker = 1

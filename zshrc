@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='nvim'
 export VISUAL='nvim'
+export SYSTEMD_EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -118,6 +119,11 @@ export VISUAL='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias update="sudo pacman -Syu && flatpak update"
+alias ips="ip -c -br a"
+# alias ls="exa --icons"
+# alias ls -la="exa --icons -la"
+# alias ls -l="exa --icons -l"
+# alias ls -a="exa --icons -a"
 
 PATH=${PATH}:/home/michel/Android/Sdk/emulator
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=007'
