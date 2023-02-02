@@ -82,10 +82,10 @@ nnoremap <silent> <A-j> :wincmd j<CR>
 nnoremap <silent> <A-h> :wincmd h<CR>
 nnoremap <silent> <A-l> :wincmd l<CR>
 
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <C-l> <C-o>l
+inoremap <A-S-h> <Left>
+inoremap <A-S-j> <Down>
+inoremap <A-S-k> <Up>
+inoremap <A-S-l> <Right>
 
 "------------Disable Navigation Keys--------------
 noremap <Up> <Nop>
@@ -99,10 +99,8 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 "-------------Drop menu navigation-----------------
-inoremap <A-h> <Left>
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
-inoremap <A-l> <Right>
 
 "---------------Map Tmux Clipboard-----------------
 vnoremap <leader>tc y<cr>:call system("tmux load-buffer -", @0)<cr>gv
@@ -146,7 +144,9 @@ let g:coc_global_extensions = [
 	\ '@yaegassy/coc-tailwindcss3'
 	\ ]
 
-" Use <c-space> to trigger completion.
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
 "-----------------------------------------------

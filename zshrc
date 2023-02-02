@@ -88,6 +88,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source <(kubectl completion zsh)
 
 # User configuration
 
