@@ -1,15 +1,12 @@
 "==============PLUGINS============================= 
 call plug#begin()
-Plug 'dracula/vim', { 'as': 'dracula' }				"Tema
-Plug 'terryma/vim-multiple-cursors'					"Multiplos cursores
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }		"Tema
+Plug 'terryma/vim-tiple-cursors'					"Multiplos cursores
 Plug 'sheerun/vim-polyglot'							"Faz highlight de syntax
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "Busca de arquivos
-Plug 'junegunn/fzf.vim'								"Complemento do fzf
 Plug 'jiangmiao/auto-pairs'							"Auto completa chaves, parenteses e etc
 Plug 'honza/vim-snippets'							"Snippets prontos para várias linguagens
 Plug 'luochen1990/rainbow'							"Definie pares de parentese por cor
 Plug 'vim-airline/vim-airline'						"Personaliza a barra de status
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/0.x' } "EMBELEZADOR DE CODIGO JS
 Plug 'aluriak/nerdcommenter'						"Complemento para comentarios de varias linhas
 Plug 'grvcoelho/vim-javascript-snippets'			"Snippets para JavaScript
 Plug 'neoclide/coc.nvim', {'branch': 'release'}		"Inteligencia do VScode para Vim
@@ -28,7 +25,7 @@ if !exists('g:syntax_on')
 	syntax enable
 endif
 
-colorscheme dracula
+colorscheme catppuccin-mocha
 
 "===============VARIÁVEIS DE AMBIENTE============
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
@@ -55,11 +52,8 @@ nnoremap <leader>f :RnvimrToggle<CR>
 nnoremap <leader>d :bdelete<CR>
 nnoremap <A-.> :bn<cr>
 nnoremap <A-,> :bp<cr>
-nnoremap <C-p> :Files<cr>
-nnoremap <C-f> :Ag<space>
 nnoremap <C-s> :%s/
 nnoremap <C-a> ggVG
-nnoremap <C-b> :Buffers<CR>
 nnoremap <Tab> <S->><S->>
 nnoremap <S-Tab> <S-<><S-<>
 nnoremap <F3> :edit ~/.config/nvim/init.vim<cr>
@@ -69,6 +63,8 @@ vnoremap <Tab> <S->><S->> gv
 vnoremap <S-Tab> <S-<><S-<> gv 
 
 inoremap <A-v> <esc>v
+inoremap <A-o> <esc>o
+inoremap <A-S-o> <esc>o
 
 "--------------COC VIM-----------------
 nnoremap <silent> gd <Plug>(coc-definition)
@@ -98,10 +94,6 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
-"-------------Drop menu navigation-----------------
-inoremap <A-j> <Down>
-inoremap <A-k> <Up>
-
 "---------------Map Tmux Clipboard-----------------
 vnoremap <leader>tc y<cr>:call system("tmux load-buffer -", @0)<cr>gv
 nnoremap <leader>tp :let @0 = system("tmux save-buffer -")<cr>"0p<cr>
@@ -119,17 +111,23 @@ let g:airline_powerline_fonts = 1
 "---------NERD COMMENTER----------------
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comments
+" Use compact syntax for prettified ti-line comments
 let g:NERDCompactSexyComs = 1
 
-" -----------Vim multiple cursors-------------------
-let g:multi_cursor_start_word_key = '<C-n>'
-let g:multi_cursor_select_all_key = '<C-A-n>'
+" -----------Vim tiple cursors-------------------
+let g:ti_cursor_start_word_key = '<C-n>'
+let g:ti_cursor_select_all_key = '<C-A-n>'
 
 "---------Rnvimr----------------------
 let g:rnvimr_enable_picker = 1
 let g:rnvimr_enable_bw = 1
 let g:rnvimr_enable_ex = 1
+
+let g:rnvimr_action = {
+	\ '<C-x>': 'NvimEdit split',
+	\ '<C-v>': 'NvimEdit vsplit',
+	\ '<esc>': 'q'
+	\ }
 
 "---------Vim Airline---------------------
 let g:airline#extensions#whitespace#enabled = 0
@@ -141,12 +139,16 @@ let g:coc_global_extensions = [
 	\ 'coc-html', 
 	\ 'coc-snippets', 
 	\ 'coc-tsserver',
-	\ '@yaegassy/coc-tailwindcss3'
 	\ ]
 
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <c-space> coc#refresh()
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 "-----------------------------------------------

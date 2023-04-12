@@ -13,14 +13,14 @@ read opcao
 if [ $opcao = 1 ]; then
 
 	sudo pacman -Syu &&
-	sudo pacman -S curl zsh tmux neovim gitg nodejs powerline-fonts flatpak ranger wl-clipboard -y &&
-	sudo usermod -s /bin/zsh $(whoami) &&
+	sudo pacman -S curl fish tmux neovim gitg nodejs powerline-fonts flatpak ranger wl-clipboard -y &&
+	sudo chsh --shell /bin/fish $(whoami) &&
 	sudo -k
-	flatpak install flathub com.raggesilver.BlackBox rest.insomnia.Insomnia com.spotify.Client -y
+	flatpak install flathub rest.insomnia.Insomnia com.spotify.Client -y
 
 elif [ $opcao = 2 ]; then
 
-	# Install the font FiraCode
+	# # Install the font FiraCode
 	mkdir ~/.local/share/fonts
 	curl -fLo ~/.local/share/fonts/"Fantasque Sans Mono Nerd Font.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FantasqueSansMono/Regular/complete/Fantasque%20Sans%20Mono%20Regular%20Nerd%20Font%20Complete.ttf
 
@@ -38,7 +38,7 @@ elif [ $opcao = 2 ]; then
 	fi	
 
 	#Ranger
-	if [ -f "~/.config/ranger/rc.conf" ]; then
+	if [ -f "$HOME/.config/ranger/rc.conf" ]; then
 		echo "Configured Ranger"
 	else
 		echo "Configuring the ranger"
@@ -49,7 +49,7 @@ elif [ $opcao = 2 ]; then
 	fi
 
 	#TMUX
-	if [ -f "~/.tmux.config" ]; then
+	if [ -f "$HOME/.tmux.config" ]; then
 		echo "Configured TMUX"
 	else
 		echo "Configuring the TMUX"
@@ -57,16 +57,13 @@ elif [ $opcao = 2 ]; then
 		ln -s $CURRENT_DIR/tmux.conf ~/.tmux.conf
 	fi
 
-	#Oh My Zsh
-	if [ -d "~/.oh-my-zsh" ]; then
-		echo "Oh My Zsh is installed"
+	#Fish
+	if grep -q "My Fish Config" "$HOME/.config/fish/config.fish"; then
+		echo "Configured Fish"
 	else
-		echo "Installing Oh My Zsh"
-		sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-		git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-		rm ~/.zshrc
-		ln -s $CURRENT_DIR/zshrc ~/.zshrc
+		echo "Configuring Fish"
+		rm ~/.config/fish/config.fish
+		ln -s $CURRENT_DIR/config.fish ~/.config/fish/config.fish
 	fi
 else 
 	echo "Bye bye"

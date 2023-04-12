@@ -99,3 +99,10 @@ else
 	echo 'NoDisplay=true' >> "$CAMINHO/qvidcap.desktop"
 	echo "QVIDCAP REMOVE"	
 fi
+
+if grep -q NoDisplay=true "$CAMINHO/fish.desktop"; then
+	echo "FISH OK"	
+else
+	echo 'NoDisplay=true' >> "$CAMINHO/fish.desktop"
+	echo "FISH REMOVE"	
+fi

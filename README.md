@@ -7,7 +7,7 @@
 - Nvim
 - Tmux
 - Ranger
-- Zsh
+- Fish
 
 ### Getting Started
 
