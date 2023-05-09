@@ -18,6 +18,7 @@ Plug 'kevinhwang91/rnvimr'							"Adiciona suporte a Ranger
 Plug 'Yggdroot/indentLine'							"Adiciona linhas de identação
 Plug 'maxmellon/vim-jsx-pretty'						"Embelezador para codigo TSX
 Plug 'christoomey/vim-system-copy'					"Ativa Ctrl-c/Ctrl-v 
+Plug 'tamton-aquib/staline.nvim'
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================

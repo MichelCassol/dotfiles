@@ -4,7 +4,7 @@
 
 ### Softwares
 
-- Nvim
+- Neovim
 - Tmux
 - Ranger
 - Fish
