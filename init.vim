@@ -1,12 +1,12 @@
 "==============PLUGINS============================= 
 call plug#begin()
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }		"Tema
-Plug 'terryma/vim-tiple-cursors'					"Multiplos cursores
+Plug 'sainnhe/sonokai'                      		"Tema
+Plug 'terryma/vim-multiple-cursors'					"Multiplos cursores
 Plug 'sheerun/vim-polyglot'							"Faz highlight de syntax
 Plug 'jiangmiao/auto-pairs'							"Auto completa chaves, parenteses e etc
 Plug 'honza/vim-snippets'							"Snippets prontos para várias linguagens
 Plug 'luochen1990/rainbow'							"Definie pares de parentese por cor
-Plug 'vim-airline/vim-airline'						"Personaliza a barra de status
+Plug 'vim-airline/vim-airline'						"Personaliza a barra de statu
 Plug 'aluriak/nerdcommenter'						"Complemento para comentarios de varias linhas
 Plug 'grvcoelho/vim-javascript-snippets'			"Snippets para JavaScript
 Plug 'neoclide/coc.nvim', {'branch': 'release'}		"Inteligencia do VScode para Vim
@@ -15,10 +15,8 @@ Plug 'valloric/matchtagalways'						"Destaca pares de tags HTML
 Plug 'alvan/vim-closetag'							"Autocompleta TAGS HTML
 Plug 'peitalin/vim-jsx-typescript'					"Realsa a sintaxe em codigos jsx
 Plug 'kevinhwang91/rnvimr'							"Adiciona suporte a Ranger
-Plug 'Yggdroot/indentLine'							"Adiciona linhas de identação
 Plug 'maxmellon/vim-jsx-pretty'						"Embelezador para codigo TSX
 Plug 'christoomey/vim-system-copy'					"Ativa Ctrl-c/Ctrl-v 
-Plug 'tamton-aquib/staline.nvim'
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================
@@ -26,7 +24,7 @@ if !exists('g:syntax_on')
 	syntax enable
 endif
 
-colorscheme catppuccin-mocha
+colorscheme sonokai
 
 "===============VARIÁVEIS DE AMBIENTE============
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
@@ -41,6 +39,8 @@ set incsearch
 set title
 set mouse=
 set cul
+set list
+set listchars=tab:\ \ ┊
 
 "===============MAPEAMENTO DE TECLAS=============
 let mapleader="\<space>"
