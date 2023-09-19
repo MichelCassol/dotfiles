@@ -1,7 +1,7 @@
 "==============PLUGINS============================= 
 call plug#begin()
-Plug 'sainnhe/sonokai'                      		"Tema
-Plug 'terryma/vim-multiple-cursors'					"Multiplos cursores
+Plug 'drewtempelmeyer/palenight.vim'				"Tema
+Plug 'mg979/vim-visual-multi', {'branch': 'master'} "Multiplos cursores
 Plug 'sheerun/vim-polyglot'							"Faz highlight de syntax
 Plug 'jiangmiao/auto-pairs'							"Auto completa chaves, parenteses e etc
 Plug 'honza/vim-snippets'							"Snippets prontos para várias linguagens
@@ -24,7 +24,12 @@ if !exists('g:syntax_on')
 	syntax enable
 endif
 
-colorscheme sonokai
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+set background=dark
+colorscheme palenight
 
 "===============VARIÁVEIS DE AMBIENTE============
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
@@ -38,7 +43,8 @@ set wrap tw=80
 set incsearch
 set title
 set mouse=
-set cul
+set cursorline
+set cursorcolumn
 set list
 set listchars=tab:\ \ ┊
 
@@ -78,7 +84,6 @@ nnoremap <silent> <A-k> :wincmd k<CR>
 nnoremap <silent> <A-j> :wincmd j<CR>
 nnoremap <silent> <A-h> :wincmd h<CR>
 nnoremap <silent> <A-l> :wincmd l<CR>
-
 inoremap <A-S-h> <Left>
 inoremap <A-S-j> <Down>
 inoremap <A-S-k> <Up>
@@ -89,7 +94,6 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
-
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
@@ -100,7 +104,7 @@ vnoremap <leader>tc y<cr>:call system("tmux load-buffer -", @0)<cr>gv
 nnoremap <leader>tp :let @0 = system("tmux save-buffer -")<cr>"0p<cr>
 
 "---------------Clear select find------------------
-nnoremap <leader>q :noh<cr>
+nnoremap <leader><space> :noh<cr>
 
 "===============VARIÁVEIS E CONFIGURAÇÕES DOS PLUGINS===========
 "---------Rainbow--------
@@ -114,10 +118,6 @@ let g:airline_powerline_fonts = 1
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified ti-line comments
 let g:NERDCompactSexyComs = 1
-
-" -----------Vim tiple cursors-------------------
-let g:ti_cursor_start_word_key = '<C-n>'
-let g:ti_cursor_select_all_key = '<C-A-n>'
 
 "---------Rnvimr----------------------
 let g:rnvimr_enable_picker = 1
