@@ -1,35 +1,23 @@
 "==============PLUGINS============================= 
 call plug#begin()
-Plug 'drewtempelmeyer/palenight.vim'				"Tema
+Plug 'ayu-theme/ayu-vim'							"Tema
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "Multiplos cursores
 Plug 'sheerun/vim-polyglot'							"Faz highlight de syntax
-Plug 'jiangmiao/auto-pairs'							"Auto completa chaves, parenteses e etc
-Plug 'honza/vim-snippets'							"Snippets prontos para várias linguagens
 Plug 'luochen1990/rainbow'							"Definie pares de parentese por cor
 Plug 'vim-airline/vim-airline'						"Personaliza a barra de statu
 Plug 'aluriak/nerdcommenter'						"Complemento para comentarios de varias linhas
-Plug 'grvcoelho/vim-javascript-snippets'			"Snippets para JavaScript
 Plug 'neoclide/coc.nvim', {'branch': 'release'}		"Inteligencia do VScode para Vim
-Plug 'ryanoasis/vim-devicons'						"Icones para o NERDTREE
+Plug 'ryanoasis/vim-devicons'						"Icones para o NeoVim
 Plug 'valloric/matchtagalways'						"Destaca pares de tags HTML
 Plug 'alvan/vim-closetag'							"Autocompleta TAGS HTML
-Plug 'peitalin/vim-jsx-typescript'					"Realsa a sintaxe em codigos jsx
 Plug 'kevinhwang91/rnvimr'							"Adiciona suporte a Ranger
-Plug 'maxmellon/vim-jsx-pretty'						"Embelezador para codigo TSX
 Plug 'christoomey/vim-system-copy'					"Ativa Ctrl-c/Ctrl-v 
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================
-if !exists('g:syntax_on')
-	syntax enable
-endif
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-set background=dark
-colorscheme palenight
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu
 
 "===============VARIÁVEIS DE AMBIENTE============
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
@@ -133,14 +121,20 @@ let g:rnvimr_action = {
 "---------Vim Airline---------------------
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 "---------COC-VIM-----------------------
+autocmd FileType php setl formatexpr=CocActionAsync('formatSelected')
+autocmd BufWritePre *.php :normal! :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 let g:coc_global_extensions = [
 	\ 'coc-css',
 	\ 'coc-html', 
 	\ 'coc-snippets', 
 	\ 'coc-tsserver',
+	\ 'coc-pairs',
+	\ 'coc-emmet',
 	\ ]
+
 
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
