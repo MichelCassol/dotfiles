@@ -7,6 +7,7 @@ set -g fish_case_sensitive no
 
 # Alias
 alias update="sudo pacman -Syu && flatpak update -y"
+# alias composer="docker run --rm --interactive --tty --volume $PWD:/app composer"
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 

@@ -13,7 +13,7 @@ read opcao
 if [ $opcao = 1 ]; then
 
 	sudo pacman -Syu &&
-	sudo pacman -S curl fish tmux neovim gitg nodejs powerline-fonts flatpak ranger wl-clipboard -y &&
+	sudo pacman -S curl fish neovim gitg nodejs powerline-fonts flatpak ranger wl-clipboard -y &&
 	sudo chsh --shell /bin/fish $(whoami) &&
 	sudo -k
 	flatpak install flathub rest.insomnia.Insomnia com.spotify.Client -y
@@ -46,15 +46,6 @@ elif [ $opcao = 2 ]; then
 		git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 		rm ~/.config/ranger/rc.conf
 		ln -s $CURRENT_DIR/rc.conf ~/.config/ranger/rc.conf
-	fi
-
-	#TMUX
-	if [ -f "$HOME/.tmux.config" ]; then
-		echo "Configured TMUX"
-	else
-		echo "Configuring the TMUX"
-		git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-		ln -s $CURRENT_DIR/tmux.conf ~/.tmux.conf
 	fi
 
 	#Fish

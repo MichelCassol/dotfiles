@@ -1,17 +1,18 @@
 "==============PLUGINS============================= 
 call plug#begin()
-Plug 'ayu-theme/ayu-vim'							"Tema
-Plug 'mg979/vim-visual-multi', {'branch': 'master'} "Multiplos cursores
-Plug 'sheerun/vim-polyglot'							"Faz highlight de syntax
-Plug 'luochen1990/rainbow'							"Definie pares de parentese por cor
-Plug 'vim-airline/vim-airline'						"Personaliza a barra de statu
-Plug 'aluriak/nerdcommenter'						"Complemento para comentarios de varias linhas
-Plug 'neoclide/coc.nvim', {'branch': 'release'}		"Inteligencia do VScode para Vim
-Plug 'ryanoasis/vim-devicons'						"Icones para o NeoVim
-Plug 'valloric/matchtagalways'						"Destaca pares de tags HTML
-Plug 'alvan/vim-closetag'							"Autocompleta TAGS HTML
-Plug 'kevinhwang91/rnvimr'							"Adiciona suporte a Ranger
-Plug 'christoomey/vim-system-copy'					"Ativa Ctrl-c/Ctrl-v 
+Plug 'ayu-theme/ayu-vim'								"Tema
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}		"Multiplos cursores
+Plug 'sheerun/vim-polyglot'								"Faz highlight de syntax
+Plug 'luochen1990/rainbow'								"Definie pares de parentese por cor
+Plug 'vim-airline/vim-airline'							"Personaliza a barra de statu
+Plug 'aluriak/nerdcommenter'							"Complemento para comentarios de varias linhas
+Plug 'neoclide/coc.nvim', {'branch': 'release'}			"Inteligencia do VScode para Vim
+Plug 'ryanoasis/vim-devicons'							"Icones para o NeoVim
+Plug 'valloric/matchtagalways'							"Destaca pares de tags HTML
+Plug 'alvan/vim-closetag'								"Autocompleta TAGS HTML
+Plug 'kevinhwang91/rnvimr'								"Adiciona suporte a Ranger
+Plug 'christoomey/vim-system-copy'						"Ativa Ctrl-c/Ctrl-v 
+Plug 'honza/vim-snippets'								"Snippets prontos para várias linguagens 
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================
@@ -78,14 +79,14 @@ inoremap <A-S-k> <Up>
 inoremap <A-S-l> <Right>
 
 "------------Disable Navigation Keys--------------
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
+" noremap <Up> <Nop>
+" noremap <Down> <Nop>
+" noremap <Left> <Nop>
+" noremap <Right> <Nop>
+" inoremap <Up> <Nop>
+" inoremap <Down> <Nop>
+" inoremap <Left> <Nop>
+" inoremap <Right> <Nop>
 
 "---------------Map Tmux Clipboard-----------------
 vnoremap <leader>tc y<cr>:call system("tmux load-buffer -", @0)<cr>gv
