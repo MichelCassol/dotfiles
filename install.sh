@@ -13,7 +13,7 @@ read opcao
 if [ $opcao = 1 ]; then
 
 	echo "Atulizando o sistema"
-	sudo pacman -Syu > /dev/null
+	sudo pacman -Syu --noconfirm > /dev/null
 
 	echo "Instalando os pacotes do pacman"
 	sudo pacman -S \
@@ -26,10 +26,10 @@ if [ $opcao = 1 ]; then
 		ranger \
 		wl-clipboard \
 		firefox \
-		-y > /dev/null
+		--noconfirm > /dev/null
 
-	echo "Fish devinido como shell principal do usuário"
 	sudo chsh --shell /bin/fish $(whoami) > /dev/null
+	echo "Fish definido como shell principal do usuário"
 	sudo -k
 
 	echo "Instalando os pacotes flatpak"
@@ -40,7 +40,7 @@ if [ $opcao = 1 ]; then
 		page.codeberg.libre_menu_editor.LibreMenuEditor \
 		com.mattjakeman.ExtensionManager \
 		flathub com.jetpackduba.Gitnuro
-		-y
+		-y > /dev/null
 
 elif [ $opcao = 2 ]; then
 
@@ -68,7 +68,7 @@ elif [ $opcao = 2 ]; then
 
 	#Ranger
 	if [ -f "$HOME/.config/ranger/rc.conf" ]; then
-		echo "Configured Ranger"
+		echo "Ranger configurado"
 	else
 		echo "Configurando o Ranger"
 		ranger --copy-config=all > /dev/null
@@ -80,12 +80,12 @@ elif [ $opcao = 2 ]; then
 
 	#Fish
 	if grep -q "My Fish Config" "$HOME/.config/fish/config.fish"; then
-		echo "Configured Fish"
+		echo "Fish configurado"
 	else
-		echo "Configuring Fish"
+		echo "Configurando Fish"
 		rm ~/.config/fish/config.fish > /dev/null
 		ln -s $CURRENT_DIR/config.fish ~/.config/fish/config.fish > /dev/null
-		echo ""
+		echo "Fish configurado"
 	fi
 else 
 	echo "Bye bye"
