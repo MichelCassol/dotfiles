@@ -13,6 +13,7 @@ Plug 'alvan/vim-closetag'								"Autocompleta TAGS HTML
 Plug 'kevinhwang91/rnvimr'								"Adiciona suporte a Ranger
 Plug 'christoomey/vim-system-copy'						"Ativa Ctrl-c/Ctrl-v 
 Plug 'honza/vim-snippets'								"Snippets prontos para várias linguagens 
+Plug 'sirver/ultisnips'									"Plugin que permite criar meu snippets
 call plug#end()
 
 "===============DEFINIÇÃO DO TEMA=================
@@ -89,8 +90,11 @@ inoremap <A-S-l> <Right>
 " inoremap <Right> <Nop>
 
 "---------------Map Tmux Clipboard-----------------
-vnoremap <leader>tc y<cr>:call system("tmux load-buffer -", @0)<cr>gv
-nnoremap <leader>tp :let @0 = system("tmux save-buffer -")<cr>"0p<cr>
+" vnoremap <leader>tc y<cr>:call system("tmux load-buffer -", @0)<cr>gv
+" nnoremap <leader>tp :let @0 = system("tmux save-buffer -")<cr>0p<cr>
+
+"----------------Mouse---------------------
+set mouse=a
 
 "---------------Clear select find------------------
 nnoremap <leader><space> :noh<cr>
