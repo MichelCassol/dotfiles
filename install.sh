@@ -20,7 +20,6 @@ if [ $opcao = 1 ]; then
 		curl \
 		fish \
 		neovim \
-		gitg \
 		nodejs \
 		powerline-fonts \
 		flatpak \
@@ -39,7 +38,8 @@ if [ $opcao = 1 ]; then
 		com.spotify.Client \
 		it.mijorus.gearlever \
 		page.codeberg.libre_menu_editor.LibreMenuEditor \
-		com.mattjakeman.ExtensionManager
+		com.mattjakeman.ExtensionManager \
+		flathub com.jetpackduba.Gitnuro
 		-y
 
 elif [ $opcao = 2 ]; then
